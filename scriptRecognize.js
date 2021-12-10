@@ -8,7 +8,8 @@ function isMobileDevice() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  if (isMobileDevice) {
+  let mobile = isMobileDevice();
+  if (mobile) {
     var constraints = {
       audio: false,
       video: {
