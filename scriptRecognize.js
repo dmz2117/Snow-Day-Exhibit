@@ -2,6 +2,23 @@ let doodleClassifier;
 let video;
 let detection=[];
 
+function gotDevices(deviceInfos) {
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+      const deviceInfo = deviceInfos[i];
+      if (deviceInfo.kind == "videoinput") {
+          console.log(deviceInfo);
+      }
+  }
+}
+
+function streamCameras() {
+  for (var i = 0; i < 2; i++) {
+      console.log(videolist[i]);
+  }
+}
+
+navigator.mediaDevices.enumerateDevices().then(gotDevices);
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   video = createCapture(VIDEO);
