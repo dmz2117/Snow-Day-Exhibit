@@ -19,10 +19,11 @@ function setup() {
       }
     };
     video = createCapture(constraints);
+    video.size(windowWidth, windowWidth*1.333);
   } else {
     video = createCapture(VIDEO);
+    video.size(windowHeight*1.333, windowHeight);
   }
-  video.size(windowHeight*1.333, windowHeight);
   video.hide();
 
   doodleClassifier = ml5.imageClassifier('DoodleNet', modelReady);
@@ -50,7 +51,11 @@ function finishImage() {
 
 function draw() {
   clear();
-  image(video, (windowWidth/2)-((windowHeight*1.333)/2), 0, windowHeight*1.333, windowHeight);
+  if (mobile) {
+    image(video, 0, 0, windowWidth, windowWidth*1.333);
+  } else {
+    image(video, (windowWidth/2)-((windowHeight*1.333)/2), 0, windowHeight*1.333, windowHeight);
+  }
   filter(THRESHOLD, 0.5);
   fill(0);
   textSize(25);
