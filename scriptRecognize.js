@@ -6,9 +6,10 @@ function isMobileDevice() {
   return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
 
+let mobile = isMobileDevice();
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  let mobile = isMobileDevice();
   if (mobile) {
     var constraints = {
       audio: false,
