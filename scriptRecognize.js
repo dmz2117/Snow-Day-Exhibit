@@ -27,6 +27,8 @@ function setup() {
   }
   video.hide();
 
+  let captureArea = get((windowWidth*0.2))
+
   doodleClassifier = ml5.imageClassifier('DoodleNet', modelReady);
   frameRate(10);
 }
@@ -45,6 +47,7 @@ function gotResults(error, results) {
   doodleClassifier.classify(canvas, gotResults);
 }
 
+// grab a picture
 function finishImage() {
   let myImg = get((windowWidth/2)-((windowHeight*1.333)/2), 0, windowHeight*1.333, windowHeight);
   
